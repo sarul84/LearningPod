@@ -28,3 +28,20 @@ with cte As
 )
 select * from cte 
 ```
+
+2. Create SOAP client in ASP.Net core
+
+```
+private MySoapClient GetSOAPClient()
+{
+    NetHttpsBinding binding = new NetHttpsBinding();
+    binding.Security.Mode = BasicHttpsSecurityMode.Transport;
+    binding.MessageEncoding = NetHttpMessageEncoding.Text;
+    binding.MaxReceivedMessageSize = Int32.MaxValue;
+    binding.MaxBufferSize = Int32.MaxValue;
+    EndpointAddress ea = new EndpointAddress(<<ur URI>>);
+
+    var client = new MySoapClient(binding, ea);
+    return client;
+}
+```
